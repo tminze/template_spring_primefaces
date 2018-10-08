@@ -1,0 +1,40 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="/WEB-INF/template/default.xhtml">
+    <ui:define name="content">
+        <h:form id="form1">
+            <div class="overflow-wrapper fixedCols jq_searchable">
+                <p:dataTable value="#{settingsBean.settings}" var="setting" paginator="true" rows="20"
+                             paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                             rowsPerPageTemplate="3,5,10" widgetVar="50"
+                             styleClass="results">
+                    <f:facet name="header">
+                        Setting List
+                    </f:facet>
+                    <p:column sortBy="#{setting.id}">
+                        <f:facet name="header">
+                            <h:outputText value="ID" />
+                        </f:facet>
+                        <h:outputText value="#{setting.id}"/>
+                    </p:column>
+                    <p:column sortBy="#{setting.key}">
+                        <f:facet name="header">
+                            <h:outputText value="Key" />
+                        </f:facet>
+                        <h:outputText value="#{setting.key}"/>
+                    </p:column>
+                    <p:column sortBy="#{setting.value}">
+                        <f:facet name="header">
+                            <h:outputText value="Value" />
+                        </f:facet>
+                        <h:outputText value="#{setting.value}"/>
+                    </p:column>
+                </p:dataTable>
+            </div>
+            <br/>
+        </h:form>
+    </ui:define>
+</ui:composition>
